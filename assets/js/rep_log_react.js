@@ -1,7 +1,7 @@
 import React from "react";
-import ReactDom from "react-dom";
+import {render} from "react-dom";
+import ReplogApp from "./RepLog/RepLogApp";
 
-const el = <h2>Lift Stuff! <span>❤️</span></h2>
-console.log(el);
+console.log(<ReplogApp />)
 
-ReactDom.render(el, document.getElementById('lift-stuff-app'));
+render(<ReplogApp />, document.getElementById('lift-stuff-app'));
