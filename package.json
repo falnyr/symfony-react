@@ -1,9 +1,12 @@
 {
   "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
     "@symfony/webpack-encore": "^0.26.0",
     "bootstrap": "3",
     "copy-webpack-plugin": "^4.4.1",
     "core-js": "2",
+    "eslint": "^7.28.0",
+    "eslint-plugin-react": "^7.24.0",
     "font-awesome": "4",
     "jquery": "^3.3.1",
     "sass": "^1.29.0",
@@ -17,5 +20,8 @@
     "watch": "encore dev --watch",
     "build": "encore production"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
 }
