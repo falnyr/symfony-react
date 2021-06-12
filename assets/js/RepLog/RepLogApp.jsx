@@ -2,6 +2,13 @@ import React, {Component} from "react";
 
 export default class ReplogApp extends Component {
   render() {
-    return <h2>Lift Stuff! <span>❤️</span></h2>
+    let heart = ''
+    if (this.props.withHeart) {
+      heart = <span>❤️</span>
+    }
+
+    return (
+      <h2>Lift Stuff! {heart}</h2>
+    );
   }
 }
