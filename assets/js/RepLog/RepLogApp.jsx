@@ -8,9 +8,11 @@ export default class ReplogApp extends Component {
     this.state = {
       highlightedRowId: null,
     }
+
+    this.handleRowClick = this.handleRowClick.bind(this)
   }
 
-  handleRowClick(repLogId, event) {
+  handleRowClick(repLogId) {
     this.setState({highlightedRowId: repLogId})
   }
 
@@ -22,8 +24,6 @@ export default class ReplogApp extends Component {
     if (withHeart) {
       heart = <span>❤️</span>
     }
-
-
 
     return (
       <div className="col-md-7">
@@ -38,7 +38,10 @@ export default class ReplogApp extends Component {
             <th>&nbsp;</th>
           </tr>
           </thead>
-          <RepLogList highlightedRowId={highlightedRowId} />
+          <RepLogList
+            highlightedRowId={highlightedRowId}
+            onRowClick={this.handleRowClick}
+          />
           <tfoot>
           <tr>
             <td>&nbsp;</td>

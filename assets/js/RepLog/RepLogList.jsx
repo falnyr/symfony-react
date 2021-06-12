@@ -3,7 +3,7 @@ import React, {Component} from "react";
 export default class RepLogList extends Component {
   render() {
 
-    const {highlightedRowId} = this.props
+    const {highlightedRowId, onRowClick} = this.props
 
     const repLogs = [
       { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
@@ -17,7 +17,7 @@ export default class RepLogList extends Component {
         <tr
           key={repLog.id}
           className={highlightedRowId === repLog.id ? 'info' : ''}
-          onClick={event => this.handleRowClick(repLog.id, event)}
+          onClick={() => onRowClick(repLog.id)}
         >
           <td>{repLog.itemLabel}</td>
           <td>{repLog.reps}</td>
