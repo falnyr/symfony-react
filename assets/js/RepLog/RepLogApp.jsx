@@ -22,12 +22,17 @@ export default class ReplogApp extends Component {
     this.setState({highlightedRowId: repLogId})
   }
 
+  handleNewItemSubmit(itemName, reps) {
+      alert(reps);
+  }
+
   render() {
     return (
       <RepLogs
         {...this.props}
         {...this.state}
         onRowClick = {this.handleRowClick}
+        onNewItemSubmit = {this.handleNewItemSubmit}
       />
     )
   }
