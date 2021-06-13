@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import RepLogs from "./RepLogs";
 import PropTypes from "prop-types";
-import {v4 as uuid} from "uuid"
 import {createRepLog, deleteRepLog, getRepLogs} from "../api/rep_log_api";
 
 export default class ReplogApp extends Component {
@@ -17,6 +16,8 @@ export default class ReplogApp extends Component {
       successMessage: ''
     }
 
+    this.successMessageTimeoutHandle = 0
+
     this.handleRowClick = this.handleRowClick.bind(this)
     this.handleAddRepLog = this.handleAddRepLog.bind(this)
     this.handleHeartChange = this.handleHeartChange.bind(this)
@@ -28,6 +29,10 @@ export default class ReplogApp extends Component {
       repLogs: data,
       isLoaded: true
     }))
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.successMessageTimeoutHandle)
   }
 
   handleHeartChange(heartCount) {
@@ -56,10 +61,25 @@ export default class ReplogApp extends Component {
           return {
             repLogs: newRepLogs,
             isSavingNewRepLog: false,
-            successMessage: 'Rep Log Saved!'
           }
         })
+
+        this.setSuccessMessage('Rep Log Saved!')
       })
+  }
+
+  setSuccessMessage(message) {
+    this.setState({
+      successMessage: message
+    })
+
+    clearTimeout(this.successMessageTimeoutHandle)
+    this.successMessageTimeoutHandle =  setTimeout(() => {
+      this.setState({
+        successMessage: ''
+      })
+      this.successMessageTimeoutHandle = 0
+    }, 3000)
   }
 
   handleDeleteRepLog(id) {
