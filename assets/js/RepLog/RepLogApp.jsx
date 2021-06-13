@@ -14,7 +14,7 @@ export default class ReplogApp extends Component {
       isLoaded: false,
       isSavingNewRepLog: false,
       successMessage: '',
-      newRepLogValidationErrorMessage: ''
+      newRepLogValidationErrorMessage: '',
     }
 
     this.successMessageTimeoutHandle = 0
@@ -137,5 +137,10 @@ export default class ReplogApp extends Component {
 }
 
 ReplogApp.propTypes = {
-  withHeart: PropTypes.bool
+  withHeart: PropTypes.bool,
+  itemOptions: PropTypes.array,
+}
+
+RepLogApp.defaultProps = {
+  itemOptions: []
 }
