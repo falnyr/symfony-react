@@ -14,7 +14,7 @@ function calculateTotalWeightLifted(repLogs) {
 }
 
 export default function RepLogs(props) {
-  const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog } = props
+  const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded } = props
 
   let heart = ''
   if (withHeart) {
@@ -41,6 +41,7 @@ export default function RepLogs(props) {
           onRowClick={onRowClick}
           repLogs={repLogs}
           onDeleteRepLog={onDeleteRepLog}
+          isLoaded={isLoaded}
         />
         <tfoot>
         <tr>
@@ -70,5 +71,6 @@ RepLogs.propTypes = {
   repLogs: PropTypes.array.isRequired,
   numberOfHearts: PropTypes.number.isRequired,
   onHeartChange: PropTypes.func.isRequired,
-  onDeleteRepLog: PropTypes.func.isRequired
+  onDeleteRepLog: PropTypes.func.isRequired,
+  isLoaded: PropTypes.bool.isRequired
 }
