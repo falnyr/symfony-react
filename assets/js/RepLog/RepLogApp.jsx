@@ -141,6 +141,6 @@ ReplogApp.propTypes = {
   itemOptions: PropTypes.array,
 }
 
-RepLogApp.defaultProps = {
+ReplogApp.defaultProps = {
   itemOptions: []
 }
