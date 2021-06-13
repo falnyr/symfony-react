@@ -2,6 +2,7 @@ import React from "react";
 import RepLogList from "./RepLogList";
 import PropTypes from "prop-types";
 import RepLogCreator from "./RepLogCreator";
+// import RepLogCreator from "./RepLogCreatorControlledComponents";
 
 function calculateTotalWeightLifted(repLogs) {
   let total = 0
@@ -24,7 +25,7 @@ export default function RepLogs(props) {
     <div className="col-md-7">
       <h2> Lift History! {heart}</h2>
 
-      <input type="range" defaultValue={numberOfHearts} onChange={e => onHeartChange(+e.target.value)}/>
+      <input type="range" value={numberOfHearts} onChange={e => onHeartChange(+e.target.value)}/>
 
       <table className="table table-striped">
         <thead>
