@@ -54,16 +54,20 @@ export default class ReplogApp extends Component {
       isSavingNewRepLog: true
     })
 
+    const newState = {
+      isSavingNewRepLog: false
+    }
+
     createRepLog(newRep)
       .then(repLog => {
         this.setState(prevState => {
           const newRepLogs = [...prevState.repLogs, repLog];
 
-          return {
+          return ({
+            ...newState,
             repLogs: newRepLogs,
-            isSavingNewRepLog: false,
-            newRepLogValidationErrorMessage: ''
-          }
+            newRepLogValidationErrorMessage: '',
+          })
         })
 
         this.setSuccessMessage('Rep Log Saved!')
@@ -73,8 +77,9 @@ export default class ReplogApp extends Component {
           const errors = errorsData.errors
           const firstError = errors[Object.keys(errors)[0]]
 
-          this.setState({
-            newRepLogValidationErrorMessage: firstError
+          return ({
+            ...newState,
+            newRepLogValidationErrorMessage: firstError,
           })
         })
       })
@@ -103,7 +108,7 @@ export default class ReplogApp extends Component {
             return repLog
           }
 
-          return Object.assign({}, repLog, {isDeleting: true})
+          return {...repLog, isDeleting: true}
         })
       }
     })

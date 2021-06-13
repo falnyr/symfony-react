@@ -34,6 +34,7 @@ Encore
         if (Encore.isProduction()) {
             babelConfig.plugins.push("transform-react-remove-prop-types")
         }
+        babelConfig.plugins.push("transform-object-rest-spread")
     }, {
         useBuiltIns: 'usage',
         corejs: 2,
