@@ -14,7 +14,19 @@ function calculateTotalWeightLifted(repLogs) {
 }
 
 export default function RepLogs(props) {
-  const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded } = props
+  const {
+    withHeart,
+    highlightedRowId,
+    onRowClick,
+    repLogs,
+    onAddRepLog,
+    numberOfHearts,
+    onHeartChange,
+    onDeleteRepLog,
+    isLoaded,
+    isSavingNewRepLog,
+    successMessage
+  } = props
 
   let heart = ''
   if (withHeart) {
@@ -26,6 +38,12 @@ export default function RepLogs(props) {
       <h2> Lift History! {heart}</h2>
 
       <input type="range" value={numberOfHearts} onChange={e => onHeartChange(+e.target.value)}/>
+
+      {successMessage && (
+        <div className="alert alert-success text-center">
+          {successMessage}
+        </div>
+      )}
 
       <table className="table table-striped">
         <thead>
@@ -42,6 +60,7 @@ export default function RepLogs(props) {
           repLogs={repLogs}
           onDeleteRepLog={onDeleteRepLog}
           isLoaded={isLoaded}
+          isSavingNewRepLog={isSavingNewRepLog}
         />
         <tfoot>
         <tr>
@@ -72,5 +91,7 @@ RepLogs.propTypes = {
   numberOfHearts: PropTypes.number.isRequired,
   onHeartChange: PropTypes.func.isRequired,
   onDeleteRepLog: PropTypes.func.isRequired,
-  isLoaded: PropTypes.bool.isRequired
+  isLoaded: PropTypes.bool.isRequired,
+  isSavingNewRepLog: PropTypes.bool.isRequired,
+  successMessage: PropTypes.string.isRequired
 }
